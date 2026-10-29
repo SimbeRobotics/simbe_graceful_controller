@@ -161,8 +161,10 @@ geometry_msgs::msg::TwistStamped GracefulController::computeVelocityCommands(
   double dist_to_goal = nav2_util::geometry_utils::calculate_path_length(transformed_plan);
 
   // If we've reached the XY goal tolerance, just rotate
-  if (dist_to_goal < goal_dist_tolerance_ || goal_reached_) {
-    goal_reached_ = true;
+  // Backport of nav2 #6071 (no internal latch). Jazzy's GoalChecker has no isGoalXYReached,
+  // so apply its xy tolerance to the straight-line distance to the goal
+  const auto & goal_position = transformed_plan.poses.back().pose.position;
+  if (std::hypot(goal_position.x, goal_position.y) < goal_dist_tolerance_) {
     double angle_to_goal = tf2::getYaw(transformed_plan.poses.back().pose.orientation);
     // Check for collisions between our current pose and goal pose
     size_t num_steps = fabs(angle_to_goal) / params_->in_place_collision_resolution;
@@ -253,7 +255,6 @@ geometry_msgs::msg::TwistStamped GracefulController::computeVelocityCommands(
 void GracefulController::setPlan(const nav_msgs::msg::Path & path)
 {
   path_handler_->setPlan(path);
-  goal_reached_ = false;
   do_initial_rotation_ = true;
 }
 
