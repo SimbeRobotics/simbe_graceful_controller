@@ -18,17 +18,17 @@
 #include "nav2_util/lifecycle_node.hpp"
 #include "nav2_controller/plugins/simple_goal_checker.hpp"
 #include "nav2_core/controller_exceptions.hpp"
-#include "nav2_graceful_controller/ego_polar_coords.hpp"
-#include "nav2_graceful_controller/smooth_control_law.hpp"
-#include "nav2_graceful_controller/graceful_controller.hpp"
+#include "simbe_graceful_controller/ego_polar_coords.hpp"
+#include "simbe_graceful_controller/smooth_control_law.hpp"
+#include "simbe_graceful_controller/graceful_controller.hpp"
 
-class SCLFixture : public nav2_graceful_controller::SmoothControlLaw
+class SCLFixture : public simbe_graceful_controller::SmoothControlLaw
 {
 public:
   SCLFixture(
     double k_phi, double k_delta, double beta, double lambda,
     double slowdown_radius, double v_linear_min, double v_linear_max, double v_angular_max)
-  : nav2_graceful_controller::SmoothControlLaw(k_phi, k_delta, beta, lambda,
+  : simbe_graceful_controller::SmoothControlLaw(k_phi, k_delta, beta, lambda,
       slowdown_radius, v_linear_min, v_linear_max, v_angular_max) {}
 
   double getCurvatureKPhi() {return k_phi_;}
@@ -41,17 +41,17 @@ public:
   double getSpeedAngularMax() {return v_angular_max_;}
   double calculateCurvature(geometry_msgs::msg::Pose target, geometry_msgs::msg::Pose current)
   {
-    auto ego_coords = nav2_graceful_controller::EgocentricPolarCoordinates(target, current);
-    return nav2_graceful_controller::SmoothControlLaw::calculateCurvature(
+    auto ego_coords = simbe_graceful_controller::EgocentricPolarCoordinates(target, current);
+    return simbe_graceful_controller::SmoothControlLaw::calculateCurvature(
       ego_coords.r, ego_coords.phi, ego_coords.delta);
   }
 };
 
-class GMControllerFixture : public nav2_graceful_controller::GracefulController
+class GMControllerFixture : public simbe_graceful_controller::GracefulController
 {
 public:
   GMControllerFixture()
-  : nav2_graceful_controller::GracefulController() {}
+  : simbe_graceful_controller::GracefulController() {}
 
   bool getInitialRotation() {return params_->initial_rotation;}
 
@@ -62,14 +62,14 @@ public:
   visualization_msgs::msg::Marker createSlowdownMarker(
     const geometry_msgs::msg::PoseStamped & motion_target)
   {
-    return nav2_graceful_controller::createSlowdownMarker(
+    return simbe_graceful_controller::createSlowdownMarker(
       motion_target,
       params_->slowdown_radius);
   }
 
   geometry_msgs::msg::Twist rotateToTarget(const double & angle_to_target)
   {
-    return nav2_graceful_controller::GracefulController::rotateToTarget(
+    return simbe_graceful_controller::GracefulController::rotateToTarget(
       angle_to_target);
   }
 

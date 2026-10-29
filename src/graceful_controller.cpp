@@ -18,10 +18,10 @@
 #include "angles/angles.h"
 #include "nav2_core/controller_exceptions.hpp"
 #include "nav2_util/geometry_utils.hpp"
-#include "nav2_graceful_controller/graceful_controller.hpp"
+#include "simbe_graceful_controller/graceful_controller.hpp"
 #include "nav2_costmap_2d/costmap_filters/filter_values.hpp"
 
-namespace nav2_graceful_controller
+namespace simbe_graceful_controller
 {
 
 void GracefulController::configure(
@@ -88,7 +88,7 @@ void GracefulController::activate()
 {
   RCLCPP_INFO(
     logger_,
-    "Activating controller: %s of type nav2_graceful_controller::GracefulController",
+    "Activating controller: %s of type simbe_graceful_controller::GracefulController",
     plugin_name_.c_str());
   transformed_plan_pub_->on_activate();
   local_plan_pub_->on_activate();
@@ -100,7 +100,7 @@ void GracefulController::deactivate()
 {
   RCLCPP_INFO(
     logger_,
-    "Deactivating controller: %s of type nav2_graceful_controller::GracefulController",
+    "Deactivating controller: %s of type simbe_graceful_controller::GracefulController",
     plugin_name_.c_str());
   transformed_plan_pub_->on_deactivate();
   local_plan_pub_->on_deactivate();
@@ -236,7 +236,7 @@ geometry_msgs::msg::TwistStamped GracefulController::computeVelocityCommands(
       // Publish the selected target_pose
       motion_target_pub_->publish(target_pose);
       // Publish marker for slowdown radius around motion target for debugging / visualization
-      auto slowdown_marker = nav2_graceful_controller::createSlowdownMarker(
+      auto slowdown_marker = simbe_graceful_controller::createSlowdownMarker(
         target_pose, params_->slowdown_radius);
       slowdown_pub_->publish(slowdown_marker);
       // Publish the local plan
@@ -448,9 +448,9 @@ void GracefulController::validateOrientations(
   }
 }
 
-}  // namespace nav2_graceful_controller
+}  // namespace simbe_graceful_controller
 
 // Register this controller as a nav2_core plugin
 PLUGINLIB_EXPORT_CLASS(
-  nav2_graceful_controller::GracefulController,
+  simbe_graceful_controller::GracefulController,
   nav2_core::Controller)

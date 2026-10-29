@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef NAV2_GRACEFUL_CONTROLLER__PATH_HANDLER_HPP_
-#define NAV2_GRACEFUL_CONTROLLER__PATH_HANDLER_HPP_
+#ifndef SIMBE_GRACEFUL_CONTROLLER__PATH_HANDLER_HPP_
+#define SIMBE_GRACEFUL_CONTROLLER__PATH_HANDLER_HPP_
 
 #include <memory>
 
@@ -21,18 +21,18 @@
 #include "nav2_costmap_2d/costmap_2d_ros.hpp"
 #include "nav2_util/geometry_utils.hpp"
 
-namespace nav2_graceful_controller
+namespace simbe_graceful_controller
 {
 
 /**
- * @class nav2_graceful_controller::PathHandler
+ * @class simbe_graceful_controller::PathHandler
  * @brief Handles input paths to transform them to local frames required
  */
 class PathHandler
 {
 public:
   /**
-   * @brief Constructor for nav2_graceful_controller::PathHandler
+   * @brief Constructor for simbe_graceful_controller::PathHandler
    */
   PathHandler(
     tf2::Duration transform_tolerance,
@@ -40,7 +40,7 @@ public:
     std::shared_ptr<nav2_costmap_2d::Costmap2DROS> costmap_ros);
 
   /**
-   * @brief Destructor for nav2_graceful_controller::PathHandler
+   * @brief Destructor for simbe_graceful_controller::PathHandler
    */
   ~PathHandler() = default;
 
@@ -78,6 +78,6 @@ protected:
   rclcpp::Logger logger_ {rclcpp::get_logger("GracefulPathHandler")};
 };
 
-}  // namespace nav2_graceful_controller
+}  // namespace simbe_graceful_controller
 
-#endif  // NAV2_GRACEFUL_CONTROLLER__PATH_HANDLER_HPP_
+#endif  // SIMBE_GRACEFUL_CONTROLLER__PATH_HANDLER_HPP_

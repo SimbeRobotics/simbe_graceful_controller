@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef NAV2_GRACEFUL_CONTROLLER__EGO_POLAR_COORDS_HPP_
-#define NAV2_GRACEFUL_CONTROLLER__EGO_POLAR_COORDS_HPP_
+#ifndef SIMBE_GRACEFUL_CONTROLLER__EGO_POLAR_COORDS_HPP_
+#define SIMBE_GRACEFUL_CONTROLLER__EGO_POLAR_COORDS_HPP_
 
 #include <math.h>
 
@@ -23,7 +23,7 @@
 #include "tf2/transform_datatypes.h"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.hpp"
 
-namespace nav2_graceful_controller
+namespace simbe_graceful_controller
 {
 
 /**
@@ -70,6 +70,6 @@ struct EgocentricPolarCoordinates
   }
 };
 
-}  // namespace nav2_graceful_controller
+}  // namespace simbe_graceful_controller
 
-#endif  // NAV2_GRACEFUL_CONTROLLER__EGO_POLAR_COORDS_HPP_
+#endif  // SIMBE_GRACEFUL_CONTROLLER__EGO_POLAR_COORDS_HPP_

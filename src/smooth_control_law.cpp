@@ -14,10 +14,10 @@
 
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include "nav2_util/geometry_utils.hpp"
-#include "nav2_graceful_controller/ego_polar_coords.hpp"
-#include "nav2_graceful_controller/smooth_control_law.hpp"
+#include "simbe_graceful_controller/ego_polar_coords.hpp"
+#include "simbe_graceful_controller/smooth_control_law.hpp"
 
-namespace nav2_graceful_controller
+namespace simbe_graceful_controller
 {
 
 SmoothControlLaw::SmoothControlLaw(
@@ -122,4 +122,4 @@ double SmoothControlLaw::calculateCurvature(double r, double phi, double delta)
   return -1.0 / r * (prop_term + feedback_term);
 }
 
-}  // namespace nav2_graceful_controller
+}  // namespace simbe_graceful_controller

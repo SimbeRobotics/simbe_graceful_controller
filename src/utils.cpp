@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "nav2_graceful_controller/utils.hpp"
+#include "simbe_graceful_controller/utils.hpp"
 
-namespace nav2_graceful_controller
+namespace simbe_graceful_controller
 {
 
 visualization_msgs::msg::Marker createSlowdownMarker(
@@ -38,4 +38,4 @@ visualization_msgs::msg::Marker createSlowdownMarker(
   return slowdown_marker;
 }
 
-}  // namespace nav2_graceful_controller
+}  // namespace simbe_graceful_controller

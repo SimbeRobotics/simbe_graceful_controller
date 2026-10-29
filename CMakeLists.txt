@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(nav2_graceful_controller)
+project(simbe_graceful_controller)
 
 find_package(ament_cmake REQUIRED)
 find_package(nav2_common REQUIRED)
@@ -36,11 +36,11 @@ set(dependencies
 )
 
 # Add Smooth Control Law as library
-add_library(smooth_control_law SHARED src/smooth_control_law.cpp)
-ament_target_dependencies(smooth_control_law ${dependencies})
+add_library(simbe_graceful_smooth_control_law SHARED src/smooth_control_law.cpp)
+ament_target_dependencies(simbe_graceful_smooth_control_law ${dependencies})
 
 # Add Graceful Controller
-set(library_name nav2_graceful_controller)
+set(library_name simbe_graceful_controller)
 
 add_library(${library_name} SHARED
   src/graceful_controller.cpp
@@ -49,10 +49,10 @@ add_library(${library_name} SHARED
   src/utils.cpp
 )
 
-target_link_libraries(${library_name} smooth_control_law)
+target_link_libraries(${library_name} simbe_graceful_smooth_control_law)
 ament_target_dependencies(${library_name} ${dependencies})
 
-install(TARGETS smooth_control_law ${library_name}
+install(TARGETS simbe_graceful_smooth_control_law ${library_name}
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin
@@ -72,7 +72,7 @@ if(BUILD_TESTING)
 endif()
 
 ament_export_include_directories(include)
-ament_export_libraries(smooth_control_law ${library_name})
+ament_export_libraries(simbe_graceful_smooth_control_law ${library_name})
 ament_export_dependencies(${dependencies})
 
 pluginlib_export_plugin_description_file(nav2_core graceful_controller_plugin.xml)

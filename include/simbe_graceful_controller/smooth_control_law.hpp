@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef NAV2_GRACEFUL_CONTROLLER__SMOOTH_CONTROL_LAW_HPP_
-#define NAV2_GRACEFUL_CONTROLLER__SMOOTH_CONTROL_LAW_HPP_
+#ifndef SIMBE_GRACEFUL_CONTROLLER__SMOOTH_CONTROL_LAW_HPP_
+#define SIMBE_GRACEFUL_CONTROLLER__SMOOTH_CONTROL_LAW_HPP_
 
 #include <algorithm>
 #include <string>
@@ -21,11 +21,11 @@
 #include "geometry_msgs/msg/pose.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 
-namespace nav2_graceful_controller
+namespace simbe_graceful_controller
 {
 
 /**
- * @class nav2_graceful_controller::SmoothControlLaw
+ * @class simbe_graceful_controller::SmoothControlLaw
  * @brief Smooth control law for graceful motion based on "A smooth control law for graceful motion"
  * (Jong Jin Park and Benjamin Kuipers).
  */
@@ -33,7 +33,7 @@ class SmoothControlLaw
 {
 public:
   /**
-   * @brief Constructor for nav2_graceful_controller::SmoothControlLaw
+   * @brief Constructor for simbe_graceful_controller::SmoothControlLaw
    *
    * @param k_phi Ratio of the rate of change in phi to the rate of change in r.
    * @param k_delta Constant factor applied to the heading error feedback.
@@ -49,7 +49,7 @@ public:
     double v_linear_min, double v_linear_max, double v_angular_max);
 
   /**
-   * @brief Destructor for nav2_graceful_controller::SmoothControlLaw
+   * @brief Destructor for simbe_graceful_controller::SmoothControlLaw
    */
   ~SmoothControlLaw() = default;
 
@@ -186,6 +186,6 @@ protected:
   double v_angular_max_;
 };
 
-}  // namespace nav2_graceful_controller
+}  // namespace simbe_graceful_controller
 
-#endif  // NAV2_GRACEFUL_CONTROLLER__SMOOTH_CONTROL_LAW_HPP_
+#endif  // SIMBE_GRACEFUL_CONTROLLER__SMOOTH_CONTROL_LAW_HPP_

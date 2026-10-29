@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef NAV2_GRACEFUL_CONTROLLER__PARAMETER_HANDLER_HPP_
-#define NAV2_GRACEFUL_CONTROLLER__PARAMETER_HANDLER_HPP_
+#ifndef SIMBE_GRACEFUL_CONTROLLER__PARAMETER_HANDLER_HPP_
+#define SIMBE_GRACEFUL_CONTROLLER__PARAMETER_HANDLER_HPP_
 
 #include <string>
 #include <vector>
@@ -27,7 +27,7 @@
 #include "nav2_util/geometry_utils.hpp"
 #include "nav2_util/node_utils.hpp"
 
-namespace nav2_graceful_controller
+namespace simbe_graceful_controller
 {
 
 struct Parameters
@@ -56,14 +56,14 @@ struct Parameters
 };
 
 /**
- * @class nav2_graceful_controller::ParameterHandler
+ * @class simbe_graceful_controller::ParameterHandler
  * @brief Handles parameters and dynamic parameters for GracefulMotionController
  */
 class ParameterHandler
 {
 public:
   /**
-   * @brief Constructor for nav2_graceful_controller::ParameterHandler
+   * @brief Constructor for simbe_graceful_controller::ParameterHandler
    */
   ParameterHandler(
     rclcpp_lifecycle::LifecycleNode::SharedPtr node,
@@ -71,7 +71,7 @@ public:
     rclcpp::Logger & logger, const double costmap_size_x);
 
   /**
-   * @brief Destructor for nav2_graceful_controller::ParameterHandler
+   * @brief Destructor for simbe_graceful_controller::ParameterHandler
    */
   ~ParameterHandler();
 
@@ -97,6 +97,6 @@ protected:
   rclcpp::Logger logger_ {rclcpp::get_logger("GracefulMotionController")};
 };
 
-}  // namespace nav2_graceful_controller
+}  // namespace simbe_graceful_controller
 
-#endif  // NAV2_GRACEFUL_CONTROLLER__PARAMETER_HANDLER_HPP_
+#endif  // SIMBE_GRACEFUL_CONTROLLER__PARAMETER_HANDLER_HPP_

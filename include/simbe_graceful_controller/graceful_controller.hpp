@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef NAV2_GRACEFUL_CONTROLLER__GRACEFUL_CONTROLLER_HPP_
-#define NAV2_GRACEFUL_CONTROLLER__GRACEFUL_CONTROLLER_HPP_
+#ifndef SIMBE_GRACEFUL_CONTROLLER__GRACEFUL_CONTROLLER_HPP_
+#define SIMBE_GRACEFUL_CONTROLLER__GRACEFUL_CONTROLLER_HPP_
 
 #include <string>
 #include <limits>
@@ -27,28 +27,28 @@
 #include "rclcpp/rclcpp.hpp"
 #include "pluginlib/class_loader.hpp"
 #include "pluginlib/class_list_macros.hpp"
-#include "nav2_graceful_controller/path_handler.hpp"
-#include "nav2_graceful_controller/parameter_handler.hpp"
-#include "nav2_graceful_controller/smooth_control_law.hpp"
-#include "nav2_graceful_controller/utils.hpp"
+#include "simbe_graceful_controller/path_handler.hpp"
+#include "simbe_graceful_controller/parameter_handler.hpp"
+#include "simbe_graceful_controller/smooth_control_law.hpp"
+#include "simbe_graceful_controller/utils.hpp"
 
-namespace nav2_graceful_controller
+namespace simbe_graceful_controller
 {
 
 /**
- * @class nav2_graceful_controller::GracefulController
+ * @class simbe_graceful_controller::GracefulController
  * @brief Graceful controller plugin
  */
 class GracefulController : public nav2_core::Controller
 {
 public:
   /**
-   * @brief Constructor for nav2_graceful_controller::GracefulController
+   * @brief Constructor for simbe_graceful_controller::GracefulController
    */
   GracefulController() = default;
 
   /**
-   * @brief Destructor for nav2_graceful_controller::GracefulController
+   * @brief Destructor for simbe_graceful_controller::GracefulController
    */
   ~GracefulController() override = default;
 
@@ -177,11 +177,11 @@ protected:
   motion_target_pub_;
   std::shared_ptr<rclcpp_lifecycle::LifecyclePublisher<visualization_msgs::msg::Marker>>
   slowdown_pub_;
-  std::unique_ptr<nav2_graceful_controller::PathHandler> path_handler_;
-  std::unique_ptr<nav2_graceful_controller::ParameterHandler> param_handler_;
-  std::unique_ptr<nav2_graceful_controller::SmoothControlLaw> control_law_;
+  std::unique_ptr<simbe_graceful_controller::PathHandler> path_handler_;
+  std::unique_ptr<simbe_graceful_controller::ParameterHandler> param_handler_;
+  std::unique_ptr<simbe_graceful_controller::SmoothControlLaw> control_law_;
 };
 
-}  // namespace nav2_graceful_controller
+}  // namespace simbe_graceful_controller
 
-#endif  // NAV2_GRACEFUL_CONTROLLER__GRACEFUL_CONTROLLER_HPP_
+#endif  // SIMBE_GRACEFUL_CONTROLLER__GRACEFUL_CONTROLLER_HPP_

@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef NAV2_GRACEFUL_CONTROLLER__UTILS_HPP_
-#define NAV2_GRACEFUL_CONTROLLER__UTILS_HPP_
+#ifndef SIMBE_GRACEFUL_CONTROLLER__UTILS_HPP_
+#define SIMBE_GRACEFUL_CONTROLLER__UTILS_HPP_
 
 #include "geometry_msgs/msg/pose_stamped.hpp"
 #include "visualization_msgs/msg/marker.hpp"
 
-namespace nav2_graceful_controller
+namespace simbe_graceful_controller
 {
 /**
    * @brief Create a flat circle marker of radius slowdown_radius around the motion target for
@@ -31,6 +31,6 @@ namespace nav2_graceful_controller
 visualization_msgs::msg::Marker createSlowdownMarker(
   const geometry_msgs::msg::PoseStamped & motion_target, const double & slowdown_radius);
 
-}  // namespace nav2_graceful_controller
+}  // namespace simbe_graceful_controller
 
-#endif  // NAV2_GRACEFUL_CONTROLLER__UTILS_HPP_
+#endif  // SIMBE_GRACEFUL_CONTROLLER__UTILS_HPP_
